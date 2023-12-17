@@ -11,4 +11,7 @@ users_data = [
 products_data = [
     Product(id=1, name="Rice", size=1, price=540.6),
 ]
-stores_data = []
+stores_data = [
+    Store(id=1, address='Kapan, Baxaberd 15', capacity=500),
+    Store(id=2, address='Kapan, M. Stepanyan 18', capacity=1000)
+]

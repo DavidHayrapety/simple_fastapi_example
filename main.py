@@ -100,6 +100,42 @@ def product_put(product_id: int, new_product: Product):
     product.id = product_id
     return product
 
+# -------------------- Stores -------------------------
+
+@app.get('/stores')
+def stores():
+    return stores_data
+
+@app.post('/stores')
+def create_product(new_store: Store):
+    if stores_data:
+        new_store.id = stores_data[-1].id + 1
+    else:
+        new_store.id = 1
+    stores_data.append(new_store)
+    return new_store
+
+@app.get('/stores/{store_id}')
+def get_store(store_id: int):
+    for store in stores_data:
+        if store.id == store_id:
+            return store
+    return JSONResponse({'msg': 'store not found'}, status_code=404)
+
+@app.put('/stores/{store_id}')
+def store_put(store_id: int, new_store: Store):
+    for store in stores_data:
+        if store.id == store_id:
+            break
+    else:
+        return JSONResponse({'msg': 'store not found'}, status_code=404)
+
+    for field, value in new_store:
+        setattr(store, field, value)
+    store.id = store_id
+    return store
+
+
 @app.get('/save')
 def save():
     pass

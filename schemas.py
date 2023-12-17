@@ -27,4 +27,4 @@ class Store(BaseModel):
     id: int = None
     address: str
     capacity: int = 200
-    products: dict[Product, int]
+    # products: dict[Product, int]
