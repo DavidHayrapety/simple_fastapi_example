@@ -10,21 +10,21 @@ class SpecialPage(str, Enum):
 
 class User(BaseModel):
     id: int = None
-    name: str 
-    email: str
+    name: str = None
+    email: str = None
 
 
 class Product(BaseModel):
-    
+
     id: int = None
-    name: str
-    size: int
-    price: float
+    name: str = None
+    size: int = None
+    price: float = None
 
 
 class Store(BaseModel):
-    
+
     id: int = None
-    address: str
+    address: str = None
     capacity: int = 200
-    # products: dict[Product, int]
+    products: dict[Product, int] = {}
